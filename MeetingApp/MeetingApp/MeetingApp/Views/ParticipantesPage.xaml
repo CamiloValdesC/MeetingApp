@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeetingApp.Views.ParticipantesPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Icon="ic_contacts"
+             Title="Participantes">
+    <ContentPage.Content>
+
+        <ScrollView
+            BindingContext="{Binding Meeting}">
+            <StackLayout
+                Padding="5">
+                
+                <Label
+                    FontSize="Large"
+                    Text="Participantes"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+
+                <Label
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand" 
+                    Text="{Binding Meeting.Descripcion}" 
+                    TextColor="Black" />
+
+                <ListView
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding Participantes}">
+
+                    <ListView.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="R.U.N."
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                Text="Nombre"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="2"
+                                FontAttributes="Bold"
+                                Text="Apellido"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="3"
+                                FontAttributes="Bold"
+                                Text="Asistencia"
+                                TextColor="Black">
+                            </Label>
+
+                        </Grid>
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Label
+                                        Grid.Column="0"
+                                        Text="{Binding RunCompleto}">
+                                    </Label>
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="{Binding Nombre}">
+                                    </Label>
+                                    <Label
+                                        Grid.Column="2"
+                                        Text="{Binding Apellido}">
+                                    </Label>
+                                    
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>                
+                
+                </ListView>             
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,64 @@
+/***************************  /usuario/registrar  ***************************/ (POST)
+
+{
+	"id": 1,
+	"username": "Antonia",
+	"password": "G@br13l",
+	"persona": {
+		"run": 24014255,
+		"dv": "4",
+		"nombre": "Gabriel",
+		"paterno": "Valdés",
+		"materno": "S",
+		"correo": "gabriel@valdes.cl"
+	},
+	"perfil": {
+		"descripcion": "admin"
+	}
+}
+
+/*****************************  /usuario/login  ****************************/ (POST)
+
+{
+	"username": "antonia",
+	"password": "gabriel"
+}
+
+/*************************  /meetingOK/{username}  *************************/ (POST)
+
+===== Registrar solo una Meeting =====
+
+{
+	"descripcion": "Reunión 001",
+	"ubicacion": "SALA DE EVENTOS",
+	"fechaHoraIni": "2018-10-18T17:42",
+	"fechaHoraFin": "2018-10-18T23:30"
+}
+
+===== Registrar solo una Meeting con Participantes =====
+
+{
+	"descripcion": "Reunión 002",
+	"ubicacion": "SALA DE EVENTOS",
+	"fechaHoraIni": "2018-10-18T17:42",
+	"fechaHoraFin": "2018-10-18T23:30",
+	"participante": [{
+		"nombre": "Nombre 001",
+		"apellido": "Apellido 001",
+		"run": 11111111,
+		"dv": "1",
+		"correo": "correo@correo.cl",
+		"fono": "12345678"
+	}, {
+		"nombre": "Nombre 002",
+		"apellido": "Apellido 002",
+		"run": 22222222,
+		"dv": "2",
+		"correo": "correo@correo.cl",
+		"fono": "12345678"
+	}]
+}
+
+
+
+

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeetingApp.Views.LoginPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Login"
+             >
+    <ContentPage.Content>
+
+        <!-- (Binding Main) Enlaza LoginPage con MainViewModel -->
+        <ScrollView BindingContext="{Binding Login}">
+            
+            <StackLayout Padding="5,25,5,5">
+                
+                <!-- IMAGEN LOGO -->
+                <Image Source="peopleCheck" HeightRequest="180" />
+
+                <!-- FORMULARIO DE ENTRADA -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                           Grid.Row="0"
+                           Text="Usuario"
+                           VerticalOptions="Center" />
+
+                    <Entry FontSize="Small"
+                           Grid.Column="1"
+                           Grid.Row="0"
+                           Keyboard="Email"
+                           Text="{Binding Username, Mode=TwoWay}"
+                           Placeholder="Ingrese su Usuario" />
+
+                    <Label Grid.Column="0"
+                           Grid.Row="1"
+                           Text="Contraseña"
+                           VerticalOptions="Center" />
+
+                    <Entry FontSize="Small"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           IsPassword="True"
+                           Text="{Binding Password, Mode=TwoWay}"
+                           Placeholder="Ingrese su Contraseña" />
+
+                </Grid>
+                
+                <!-- ACTIVITY INDICATOR LOGIN -->
+                <ActivityIndicator IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                                   VerticalOptions="CenterAndExpand" />
+                
+                <!-- BLOQUE RECORDAR USUARIO -->
+                <StackLayout Orientation="Horizontal">
+                    <Label HorizontalOptions="StartAndExpand"
+                           Text="Recordar Ingreso"
+                           VerticalOptions="Center" />
+                    <Switch IsToggled="{Binding IsRemembered, Mode=TwoWay}"
+                            HorizontalOptions="End" />
+                </StackLayout>
+                
+                <!-- BLOQUE RECUPERAR CONTRASEÑA -->
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             VerticalOptions="CenterAndExpand">
+                    <Label Text="Recuperar Contraseña"
+                           TextColor="#4475BA" />
+                </StackLayout>
+                
+                <!-- BOTONERA LOGIN -->
+                <StackLayout Orientation="Horizontal">
+
+                    <Button BackgroundColor="#4475BA"
+                            Command="{Binding IngresarCommand}"
+                            FontSize="Small"
+                            HeightRequest="36"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                            Text="Ingresar"
+                            TextColor="White" />
+
+                    <Button BackgroundColor="Purple"
+                            Command="{Binding RegisterCommand}"
+                            FontSize="Small"
+                            HeightRequest="36"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="True"
+                            Text="Registrar"
+                            TextColor="White" />
+
+                </StackLayout>
+
+                <!-- BOTON DEBUG -->
+                <StackLayout Orientation="Horizontal">
+
+                    <Button BackgroundColor="#4475BA"
+                            Command="{Binding DebugCommand}"
+                            FontSize="Small"
+                            HeightRequest="36"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                            Text="DEBUG"
+                            TextColor="White" />
+
+                </StackLayout>
+
+                <!-- COPYRIGHT -->
+
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             VerticalOptions="EndAndExpand">
+                    <Label Text="@Copyright 2018 JAVA DEVELOPERS SPA."
+                           VerticalOptions="Center" />
+                </StackLayout>
+
+            </StackLayout>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
