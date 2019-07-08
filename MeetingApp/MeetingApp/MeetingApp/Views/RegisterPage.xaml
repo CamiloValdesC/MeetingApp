@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeetingApp.Views.RegisterPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Register">
+    
+    <ContentPage.Content>
+
+        <ScrollView BindingContext="{Binding Register}">
+            <StackLayout Padding="5">
+                
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="Formulario de Registro" />
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Username"
+                        VerticalOptions="Center"/>
+
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Placeholder="Ingrese Username"
+                        Text="{Binding NewUsername, Mode=TwoWay}" />
+
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="Correo Electrónico"
+                        VerticalOptions="Center"/>
+
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Keyboard="Email"
+                        Placeholder="Ingrese Correo Electrónico"
+                        Text="{Binding NewEmail, Mode=TwoWay}" />
+
+                </Grid>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <Button BackgroundColor="#4475BA"
+                            Command="{Binding RegisterCommand}"
+                            FontSize="Small"
+                            HeightRequest="36"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                            Text="Registrar"
+                            TextColor="White" />
+
+                </StackLayout>
+
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand" />
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

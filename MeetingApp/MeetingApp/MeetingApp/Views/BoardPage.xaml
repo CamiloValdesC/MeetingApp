@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeetingApp.Views.BoardPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="My Meetings">
+    <ContentPage.Content>
+        
+        <StackLayout
+            BindingContext="{Binding Board}">
+
+            <SearchBar
+                HeightRequest="46"
+                Placeholder="Buscar..."
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding Filter, Mode=TwoWay}" >
+            </SearchBar>
+
+            <ListView
+                HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Meetings}"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshCommand}"
+            >
+            <!--
+                HasUnevenRows => Permite flexibilidad de tamaño en una afila de la ListView
+                IsPullToRefreshEnable => Permite refrescar la ListView al arrastrar hacia abajo
+                IsRefreshing => ActivityIndicator
+                ItemSource => Data con la cual se cargara la ListView
+                RefreshCommand => Que hacer al realizar la acción IsPullToRefreshEnable
+            -->
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="True"
+                                Margin="5">
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectMeetingCommand}"/>
+                                </Frame.GestureRecognizers>
+                                
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout 
+                                        Grid.Column="0"
+                                        VerticalOptions="Center">
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            FontSize="Medium" 
+                                            Text="{Binding Descripcion}"
+                                            TextColor="Black">
+                                        </Label>
+                                        <Label 
+                                            Text="{Binding Ubicacion}"
+                                            TextColor="Black">
+                                        </Label>
+                                    </StackLayout>
+                                    <Image 
+                                        Grid.Column="1"
+                                        HorizontalOptions="End" 
+                                        Source="ic_chevron_right">
+                                    </Image>
+                                </Grid>
+                            </Frame>
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+
+            </ListView>
+            
+        </StackLayout>
+        
+    </ContentPage.Content>
+    
+</ContentPage>

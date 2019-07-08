@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeetingApp.Views.MeetingPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Icon="ic_info"
+             Title="Meeting Detalle">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding Meeting}">
+            <StackLayout
+                Padding="5">
+                
+                <Label
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center" 
+                    Text="{Binding Meeting.Descripcion}" 
+                    TextColor="Black">
+                </Label>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="ID:">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        FontAttributes="Bold"
+                        Text="{Binding Meeting.IdMeeting}">
+                    </Label>
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="Ubicación:">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        FontAttributes="Bold"
+                        Text="{Binding Meeting.Ubicacion}">
+                    </Label>
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="Fecha Inicio:">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        FontAttributes="Bold"
+                        Text="{Binding Meeting.FechaHoraIni, StringFormat='\{0:dd/MM/yyyy}'}">
+                    </Label>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="Hora Inicio:">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        FontAttributes="Bold"
+                        Text="{Binding Meeting.FechaHoraIni, StringFormat='\{0:HH:mm tt}'}">
+                    </Label>
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        Text="Fecha Término:">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        FontAttributes="Bold"
+                        Text="{Binding Meeting.FechaHoraFin, StringFormat='\{0:dd/MM/yyyy}'}">
+                    </Label>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        Text="Hora Término:">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        FontAttributes="Bold"
+                        Text="{Binding Meeting.FechaHoraFin, StringFormat='\{0:HH:mm tt}'}">
+                    </Label>
+
+                </Grid>
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
